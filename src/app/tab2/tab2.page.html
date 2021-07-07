@@ -22,7 +22,12 @@
       <ion-img [src] = "photo.webviewPath"></ion-img>
       </ion-col>
     </ion-row>
-  </ion-grid>  
+  </ion-grid>
+  <ion-fab vertical="bottom" horizontal="left" slot="fixed">
+    <ion-fab-button color="danger" (click) = "deleteAllPhotosFromGallery()">
+      <ion-icon name="trash"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>  
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
     <ion-fab-button (click) = "addPhotoToGallery()">
       <ion-icon name="camera"></ion-icon>

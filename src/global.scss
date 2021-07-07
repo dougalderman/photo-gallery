@@ -24,3 +24,15 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.modal-custom-class .add-top-margin {
+    margin-top: 1rem;
+}
+
+.modal-custom-class .add-left-margin {
+    margin-left: 1rem;
+}
+
+.modal-custom-class .flex-display {
+    display: flex;
+}

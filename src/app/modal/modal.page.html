@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Delete All Pictures</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-page">
+    <ion-fab class="add-top-margin" horizontal="left" slot="fixed">
+      <div>
+        {{modalMessage}}
+      </div>
+      <div class="flex-display add-top-margin">
+        <ion-fab-button class="add-left-margin" color="light" (click) = "dismiss(false)">
+          Cancel
+        </ion-fab-button>
+        <ion-fab-button class="add-left-margin" color="danger" (click) = "dismiss(true)">
+          OK
+        </ion-fab-button>
+      </div>
+    </ion-fab>
+  </div>
+</ion-content>
