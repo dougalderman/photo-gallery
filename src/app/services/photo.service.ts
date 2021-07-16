@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-import { Capacitor } from '@capacitor/core';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { Storage } from '@capacitor/storage';
@@ -15,7 +14,7 @@ export class PhotoService {
 
   constructor() { }
 
-  public async addNewToGallery() {
+  public async callCamera(): Promise<Photo> {
     // Take a photo
     const capturedPhoto: Photo = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
@@ -23,7 +22,11 @@ export class PhotoService {
       quality: 100
     });
 
-    const savedImageFile = await this.savePicture(capturedPhoto);
+    return capturedPhoto;
+  }
+
+  public async saveCameraPicture(photoFromCamera) {
+    const savedImageFile = await this.savePicture(photoFromCamera);
     this.photos.unshift(savedImageFile);
 
     Storage.set({
