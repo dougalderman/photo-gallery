@@ -19,7 +19,7 @@ export class PhotoService {
     this.platform = platform;
    }
 
-  public async callCamera(): Promise<Photo> {
+  public async callCamera() {
     // Take a photo
     const capturedPhoto: Photo = await Camera.getPhoto({
       resultType: CameraResultType.Uri,
@@ -126,6 +126,25 @@ export class PhotoService {
         photo.webviewPath = `data:image/jpeg;base64,${readFile.data}`;
       }
     }  
+  }
+
+  public async deletePicture(photo: myPhoto, position: number) {
+    // Remove this photo from the Photos reference data array
+    this.photos.splice(position, 1);
+
+    // Update photos array cache by overwriting the exitisting photo array
+    Storage.set({
+      key: this.PHOTO_STORAGE,
+      value: JSON.stringify(this.photos)
+    });
+
+    // delete photo file from filesystem
+    const filename = photo.filepath.substr(photo.filepath.lastIndexOf('/') + 1);
+
+    await Filesystem.deleteFile({
+      path: filename,
+      directory: Directory.Data
+    })
   }
 }
 
